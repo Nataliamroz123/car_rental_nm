@@ -1,7 +1,7 @@
 from models.data_source import rental_cars, workers, clients
 from utils.crud import read_car_rental, add_car_rental, remove_car_rental, update_car_rental, read_workers, add_workers, \
     remove_workers, update_workers, read_clients, add_clients, remove_clients, update_clients
-#from utils.emap import single_map
+from utils.emap import single_map
 
 
 # Definicja menu głównego
@@ -42,7 +42,7 @@ while True:
         elif sub_choice == "4":
             update_car_rental(rental_cars)
     elif choice == "2":
-        sub_choice = sub_menu("Pracownicy")
+        sub_choice = sub_menu("Pracownicy wypożyczalni samochodowych")
         if sub_choice == "1":
             read_workers(workers)
         elif sub_choice == "2":
@@ -52,7 +52,7 @@ while True:
         elif sub_choice == "4":
             update_workers(workers)
     elif choice == "3":
-        sub_choice = sub_menu("Klienci")
+        sub_choice = sub_menu("Klienci wypożyczalni samochodowych")
         if sub_choice == "1":
             read_clients(clients)
         elif sub_choice == "2":
