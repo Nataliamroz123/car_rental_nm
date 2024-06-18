@@ -15,7 +15,7 @@ def read_car_rental(rental_cars: list) -> None:
         print("Nazwa wypożyczalni:", rental_cars['name'])
         print("Numer telefonu:", rental_cars['number'])
         print("Ilość samochodów:", rental_cars['cars'])
-        print("Współrzędne:", rental_cars['location'])
+        print("Współrzędne siedziby firmy:", rental_cars['location'])
 
 
 def add_car_rental(lista: list) -> None:

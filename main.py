@@ -63,7 +63,7 @@ while True:
         if sub_choice == "1":
             read_clients(clients)
         elif sub_choice == "2":
-            add_clients(clients)
+            add_clients(clients, rental_cars)
         elif sub_choice == "3":
             remove_clients(clients)
         elif sub_choice == "4":

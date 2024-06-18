@@ -35,7 +35,7 @@ def workers_map(workers: list) -> None:
         coordinates.append({
             'latitude': worker['location']['latitude'],
             'longitude': worker['location']['longitude'],
-            'name': f"{worker['name']} {worker['surname']}",
+            'name': f"{worker['name']} {worker['surname']} {worker['workplace']}",
         })
     single_map("workers", coordinates)
 
@@ -49,6 +49,6 @@ def clients_map(clients: list) -> None:
         coordinates.append({
             'latitude': client['location']['latitude'],
             'longitude': client['location']['longitude'],
-            'name': f"{client['name']} {client['surname']}",
+            'name': f"{client['name']} {client['surname']} {client['rental']}",
         })
     single_map("clients", coordinates)
