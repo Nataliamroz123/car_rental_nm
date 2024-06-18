@@ -1,36 +1,56 @@
-#import folium
-#import requests
-#from bs4 import BeautifulSoup
+import os
+import webbrowser
 
-# def single_map(location: tuple) -> None:
-#     url: str = f'https://pl.wikipedia.org/wiki/{location[0]}'
-#     response = requests.get(url)
-#     response_html = BeautifulSoup(response.text, 'html.parser')
-#     latitude = response_html.select('.latitude')[1].text.replace(",", ".")
-#     longitude = response_html.select('.longitude')[1].text.replace(",", ".")
-#     map = folium.Map(location=[latitude, longitude], zoom_start=11)
-#     folium.Marker(location=[latitude, longitude], popup=f"{location[0]} rządzi!!").add_to(map)
-#     map.save(f'./{location[0]}.html')
+import folium
 
-def all_rentals_map() -> None:
-    locations = [(rental['name'], rental['location']) for rental in rental_cars]
-    map = folium.Map(location=[50.0641924, 19.9449744], zoom_start=6)
-    for location in locations:
-        folium.Marker(location=[location[1]['latitude'], location[1]['longitude']], popup=location[0]).add_to(map)
-    map.save('all_rentals.html')
 
-def workers_map(worker_list: list) -> None:
-    locations = [(worker['name'], worker['surname'], worker['location']) for worker in worker_list]
-    map = folium.Map(location=[50.0641924, 19.9449744], zoom_start=6)
-    for location in locations:
-        folium.Marker(location=[location[2]['latitude'], location[2]['longitude']], popup=f"{location[0]} {location[1]}").add_to(map)
-    map.save(f'workers_map.html')
+# import requests
+# from bs4 import BeautifulSoup
 
-def clients_map(client_list: list) -> None:
-    locations = [(client['name'], client['surname'], client['location']) for client in client_list]
-    map = folium.Map(location=[50.0641924, 19.9449744], zoom_start=6)
-    for location in locations:
-        folium.Marker(location=[location[2]['latitude'], location[2]['longitude']], popup=f"{location[0]} {location[1]}").add_to(map)
-    map.save(f'clients_map.html')
+def single_map(name: str, coordinates: list) -> None:
+    # środek polski 52.11433, 19.42367
+    map = folium.Map(location=[52.11433, 19.42367], zoom_start=7)
+    for coord in coordinates:
+        folium.Marker(location=[coord['latitude'], coord['longitude']], popup=f"{coord['name']}").add_to(map)
+    map.save(f'./{name}.html')
+    print(os.path.realpath(f'./{name}.html'))
+    webbrowser.open('file://' + os.path.realpath(f'./{name}.html'))
 
-#def rental_workers_map(worker_list: list) -> None:
+
+def all_rentals_map(rental_cars: list) -> None:
+    coordinates = []
+    for rental in rental_cars:
+        coordinates.append({
+            'latitude': rental['location']['latitude'],
+            'longitude': rental['location']['longitude'],
+            'name': rental['name'],
+        })
+    single_map("all_rentals", coordinates)
+
+
+def workers_map(workers: list) -> None:
+    rental_name = input("Podaj nazwę wypożyczalni (brak firmy oznacza wszystkie): ")
+    coordinates = []
+    for worker in workers:
+        if worker['workplace'] != rental_name and rental_name != "":
+            continue
+        coordinates.append({
+            'latitude': worker['location']['latitude'],
+            'longitude': worker['location']['longitude'],
+            'name': f"{worker['name']} {worker['surname']}",
+        })
+    single_map("workers", coordinates)
+
+
+def clients_map(clients: list) -> None:
+    rental_name = input("Podaj nazwę wypożyczalni (brak firmy oznacza wszystkie): ")
+    coordinates = []
+    for client in clients:
+        if client['rental'] != rental_name and rental_name != "":
+            continue
+        coordinates.append({
+            'latitude': client['location']['latitude'],
+            'longitude': client['location']['longitude'],
+            'name': f"{client['name']} {client['surname']}",
+        })
+    single_map("clients", coordinates)

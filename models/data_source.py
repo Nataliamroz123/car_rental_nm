@@ -1,7 +1,7 @@
 rental_cars: list = [
-    {"name": "Panek", "number": 123456789, "cars":1234, "workers":2, "location": {"latitude": 52.19951, "longitude": 20.96568}},
-    {"name": "Traficar", "number": 234097145, "cars": 655443, "workers":1, "location": {"latitude": 50.02623, "longitude": 19.95004}},
-    {"name": "RentCars", "number": 439140964, "cars": 654222, "workers":2, "location": {"latitude": 50.07327, "longitude": 19.80871}}
+    {"name": "Panek", "number": 123456789, "cars":1234, "location": {"latitude": 52.19951, "longitude": 20.96568}},
+    {"name": "Traficar", "number": 234097145, "cars": 655443, "location": {"latitude": 50.02623, "longitude": 19.95004}},
+    {"name": "RentCars", "number": 439140964, "cars": 654222, "location": {"latitude": 50.07327, "longitude": 19.80871}}
 ]
 
 workers: list = [
@@ -11,6 +11,7 @@ workers: list = [
     {"name": "Patrycja", "surname": "Lubczyk", "age":53, "workplace":"RentCars", "location": {"latitude": 50.07327, "longitude": 19.80871}},
     {"name": "Patryk", "surname": "Banasiak", "age":32, "workplace":"RentCars", "location": {"latitude": 50.07327, "longitude": 19.80871}}
 ]
+
 clients: list = [
     {"name": "Natalia", "surname": "Muzak", "age": 44, "rental":"Panek", "location": {"latitude": 52.19951, "longitude": 20.96568}},
     {"name": "Lidia", "surname": "Janusz", "age": 32, "rental":"Traficar", "location": {"latitude": 50.02623, "longitude": 19.95004}},
