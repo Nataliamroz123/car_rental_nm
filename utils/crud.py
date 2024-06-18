@@ -2,8 +2,7 @@ def login():
     username = input("Wpisz login: ")
     password = input("Wpisz hasło: ")
 
-    # if username == "Natalia" and password == "geoinformatyka":  # Replace with your own credentials
-    if username == "a" and password == "a":  # Replace with your own credentials
+    if username == "Natalia" and password == "geoinformatyka":  # Replace with your own credentials
         print("Zalogowano!")
     else:
         print("Błędne hasło lub login. Wpisz ponownie dane do logowania.")

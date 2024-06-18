@@ -4,8 +4,6 @@ import webbrowser
 import folium
 
 
-# import requests
-# from bs4 import BeautifulSoup
 
 def single_map(name: str, coordinates: list) -> None:
     # środek polski 52.11433, 19.42367

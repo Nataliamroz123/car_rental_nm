@@ -27,7 +27,7 @@ def sub_menu(title):
     return choice
 
 
-# Główna pętla programu
+
 login()
 
 while True:
